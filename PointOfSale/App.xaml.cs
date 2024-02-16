@@ -1,12 +1,24 @@
 ﻿namespace PointOfSale
 {
+    using PointOfSale.Pages;
+
+
     public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            App.Current.UserAppTheme = AppTheme.Dark;
+
+            if (DeviceInfo.Idiom == DeviceIdiom.Phone)
+            {
+                MainPage = new AppShellMobile();
+            }
+            else
+            {
+                MainPage = new AppShell();
+            }
         }
     }
 }
